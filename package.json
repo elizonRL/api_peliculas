@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "NODE_ENV=test node node_modules/mocha/bin/mocha"
+    "test": "NODE_ENV=test node node_modules/mocha/bin/mocha",
+    "start": "node ./src/app.js", 
+    "build": "npm install"
   },
   "author": "",
   "license": "ISC",
