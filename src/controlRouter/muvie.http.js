@@ -3,6 +3,7 @@ const muvieControlller = require("../controller/muvie.controller");
 const getMuvies = async (req, res) => {
   try {
     if ((await muvieControlller.status()) === 200) {
+      
       const muvies = await muvieControlller.getMuviesController();
       res.status(200).send(muvies);
     } else if ((await muvieControlller.status()) === 401) {

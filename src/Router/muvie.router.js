@@ -6,7 +6,7 @@ const muvieHttp = require("../controlRouter/muvie.http");
 router.route('/')
     .get(muvieHttp.getMuvies);
 router.route('/buscarpelicula/:muvie_id')
-    .put(muvieHttp.updateMuvie);
+    .post(muvieHttp.updateMuvie);
 router.route('/misfavoritas')
     .get(muvieHttp.getMyFavoritesMuevies);
 router.route('/misfavoritas/:muvie_id')

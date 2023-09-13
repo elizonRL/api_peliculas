@@ -11,7 +11,7 @@ require("dotenv").config();
 const axios = require("axios");
 const e = require("express");
 apiKey = process.env.API_KEY;
-pagina = 1;
+let pagina;
 const muvies = [];
 const options = {
   method: "GET",
@@ -40,6 +40,7 @@ const getMuvieByIdController = async (muvie_id) => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${muvie_id}?api_key=${apiKey}&language=es-MX`
   );
+
   muvies.push({
     muvie_id: uuidv4(),
     id_pelicula: response.data.id,
@@ -50,29 +51,20 @@ const getMuvieByIdController = async (muvie_id) => {
     poularity: response.data.popularity,
     original_language: response.data.original_language,
   });
-  return muvies;
+  return response.data;
 };
+
 //funcion para mostrar las peliculas en el array
 const getMyFavorites = () => {
-  let listMuvie = {};
   return muvies;
-  /*for (muvie of muvies) {
-    console.log(muvie);
-    return muvie;
-  }
-  /*
-  muvies.forEach((element, index) => {
-    console.log(element, index);
-    listMuvie = {element};
-  });
-  return listMuvie;*/
 };
 
 //funcion para eliminar una pelicula del array por su pocision
 const deleteMuvieController = (muvie_id) => {
-  const indexOfId = muvies.findIndex((element) => element.muvie_id === muvie_id);
-  console.log(indexOfId);
-    muvies.splice(indexOfId, 1);
+  const indexOfId = muvies.findIndex(
+    (element) => element.muvie_id === muvie_id
+  );
+  muvies.splice(indexOfId, 1);
   return muvies;
 };
 
