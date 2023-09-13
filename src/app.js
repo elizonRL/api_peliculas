@@ -6,14 +6,14 @@
 
 require('dotenv').config();
 const express = require("express");
-const axios = require("axios");
 const bodyParser = require("body-parser");
-const muvieControlller = require("./controller/muvie.controller");
 const muvieRouter = require('./Router/muvie.router').router;
+const cors = require('cors')
 
 const port = process.env.PORT;
 const app = express();
 app.use(bodyParser.json());
+app.use(cors())
 
 /** 
 * Funcion que optines .

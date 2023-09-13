@@ -27,7 +27,7 @@ describe("Suite de test busqueda de pelicula por id", () => {
       .set('content-type', 'application/json')
       .end((err, res) => {
         chai.assert.equal(res.status, 200);
-        chai.assert.equal(res.body.title, "Megalodón 2: El gran abismo");
+        chai.assert.equal(res.body[0].title, "Megalodón 2: El gran abismo");
       });
   });
 });
