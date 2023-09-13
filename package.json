@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "NODE_ENV=test node node_modules/mocha/bin/mocha",
-    "start": "node ./src/app.js", 
+    "start": "node ./src/app.js",
     "build": "npm install"
   },
   "author": "",
@@ -15,6 +15,7 @@
     "body-parse": "^0.1.0",
     "chai": "^4.3.8",
     "chai-http": "^4.4.0",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
     "express": "^4.18.2"
