@@ -4,7 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "NODE_ENV=test node node_modules/mocha/bin/mocha src/**/*.test.js",
+=======
+    "test": "NODE_ENV=test node node_modules/mocha/bin/mocha",
+>>>>>>> d78b774851f67ec9813ab9c35959c402a1b6c87e
     "start": "node ./src/app.js",
     "build": "npm install"
   },

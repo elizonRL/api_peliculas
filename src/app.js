@@ -8,12 +8,20 @@ require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const muvieRouter = require('./Router/muvie.router').router;
+<<<<<<< HEAD
 const cors = require('cors')
+=======
+const cors = require('cors');
+>>>>>>> d78b774851f67ec9813ab9c35959c402a1b6c87e
 
 const port = process.env.PORT;
 const app = express();
 app.use(bodyParser.json());
+<<<<<<< HEAD
 app.use(cors())
+=======
+app.use(cors());
+>>>>>>> d78b774851f67ec9813ab9c35959c402a1b6c87e
 
 /** 
 * Funcion que optines .
