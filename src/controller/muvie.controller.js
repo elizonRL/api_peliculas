@@ -13,6 +13,7 @@ const e = require("express");
 apiKey = process.env.API_KEY;
 let pagina;
 const muvies = [];
+const muvieByIdUrl = "https://api.themoviedb.org/3/movie/";
 const options = {
   method: "GET",
   url: "https://api.themoviedb.org/3/movie/popular",
@@ -38,9 +39,19 @@ const status = async () => {
 //funcion para optener una pelicula por id
 const getMuvieByIdController = async (muvie_id) => {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/${muvie_id}?api_key=${apiKey}&language=es-MX`
+    `${muvieByIdUrl}${muvie_id}?api_key=${apiKey}&language=es-MX`
   );
 
+ 
+  return response.data;
+};
+
+//funcion para agregar una pelicula al array
+const addMuvieController = async (muvie_id) => {
+  const response = await axios.get(
+    `${muvieByIdUrl}${muvie_id}?api_key=${apiKey}&language=es-MX`
+  );
+ 
   muvies.push({
     muvie_id: uuidv4(),
     id_pelicula: response.data.id,
@@ -51,11 +62,12 @@ const getMuvieByIdController = async (muvie_id) => {
     poularity: response.data.popularity,
     original_language: response.data.original_language,
   });
-  return response.data;
-};
+  return muvies;
+}
 
 //funcion para mostrar las peliculas en el array
 const getMyFavorites = () => {
+
   return muvies;
 };
 
@@ -73,3 +85,4 @@ exports.status = status;
 exports.getMuvieByIdController = getMuvieByIdController;
 exports.getMyFavorites = getMyFavorites;
 exports.deleteMuvieController = deleteMuvieController;
+exports.addMuvieController = addMuvieController;

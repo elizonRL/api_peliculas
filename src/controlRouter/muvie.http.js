@@ -3,7 +3,6 @@ const muvieControlller = require("../controller/muvie.controller");
 const getMuvies = async (req, res) => {
   try {
     if ((await muvieControlller.status()) === 200) {
-      
       const muvies = await muvieControlller.getMuviesController();
       res.status(200).send(muvies);
     } else if ((await muvieControlller.status()) === 401) {
@@ -15,12 +14,11 @@ const getMuvies = async (req, res) => {
     console.log(error);
   }
 };
-const updateMuvie = async (req, res) => {
+const findMuvie = async (req, res) => {
   try {
     const muvie_id = req.params.muvie_id;
     const data_id = await muvieControlller.getMuvieByIdController(muvie_id);
-    res.status(200).json(data_id)
-   
+    res.status(201).json(data_id);
   } catch (error) {
     console.log(error);
   }
@@ -28,13 +26,23 @@ const updateMuvie = async (req, res) => {
 const getMyFavoritesMuvies = (req, res) => {
   try {
     const muvies = muvieControlller.getMyFavorites();
-    res.status(200).json(muvies);
+    res.status(201).json(muvies);
   } catch (error) {
     console.log(error);
   }
 };
 
- const deleteMuvie =  (req, res) => { 
+const addMuvie = async (req, res) => {
+  try {
+    const muvie = req.params.muvie_id;
+    const response = await muvieControlller.addMuvieController(muvie);
+    res.status(200).json(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteMuvie = (req, res) => {
   try {
     const muvie_id = req.params.muvie_id;
     muvieControlller.deleteMuvieController(muvie_id);
@@ -42,10 +50,10 @@ const getMyFavoritesMuvies = (req, res) => {
   } catch (error) {
     console.log(error);
   }
-
- }
+};
 
 exports.getMuvies = getMuvies;
-exports.updateMuvie = updateMuvie;
+exports.findeMuvie = findMuvie;
 exports.getMyFavoritesMuevies = getMyFavoritesMuvies;
 exports.deleteMuvie = deleteMuvie;
+exports.addMuvie = addMuvie;
